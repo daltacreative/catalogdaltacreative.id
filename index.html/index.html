@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio - Dalta Creative.ID</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1 class="logo">Dalta Creative.ID</h1>
+    <ul class="nav-links">
+      <li><a href="#slide1">Beranda</a></li>
+      <li><a href="#slide2">Tentang</a></li>
+      <li><a href="#slide3">Portofolio</a></li>
+      <li><a href="#slide4">Layanan</a></li>
+      <li><a href="#slide5">Kontak</a></li>
+    </ul>
+  </header>
+
+  <!-- SLIDE 1 -->
+  <section id="slide1" class="slide hero">
+    <div class="overlay"></div>
+    <div class="content">
+      <h2>Dalta Creative.ID</span></h2>
+      <p>Desainer profesional yang berfokus pada desain modern dan estetika visual yang kuat.</p>
+      <a href="#slide3" class="btn">Lihat Portofolio</a>
+    </div>
+  </section>
+
+  <!-- SLIDE 2 -->
+  <section id="slide2" class="slide about">
+    <div class="content">
+      <h2>Tentang Kami</h2>
+      <p>
+        Kami adalah penyedia layanan kreatif dengan pengalaman di bidang desain grafis, Color Grading dan Editing Video .
+        Setiap proyek yang kami buat dengan ketelitian tinggi agar memberikan kesan profesional dan menarik.
+      </p>
+    </div>
+  </section>
+
+  <!-- SLIDE 3 -->
+  <section id="slide3" class="slide projects">
+  <div class="content">
+    <h2>Portofolio</h2>
+    <div class="gallery">
+      <div class="project-card">
+        <img src="image/logo.jpg" alt="Logo Design" onclick="openPreview(this)">
+        <h3>Logo Design</h3>
+      </div>
+
+      <div class="project-card">
+        <img src="image/poster.jpg" alt="Poster Design" onclick="openPreview(this)">
+        <h3>Poster Design</h3>
+      </div>
+
+      <div class="project-card">
+        <img src="image/typography.jpg" alt="Typography" onclick="openPreview(this)">
+        <h3>Typography</h3>
+      </div>
+
+      <div class="project-card">
+        <img src="image/tshirt.jpg" alt="T-Shirt Design" onclick="openPreview(this)">
+        <h3>T-Shirt Design</h3>
+      </div>
+
+      <div class="project-card">
+        <video autoplay muted loop playsinline onclick="openPreview(this)">
+          <source src="video/videoediting.mp4" type="video/mp4">
+        </video>
+        <h3>Video Editing</h3>
+      </div>
+
+      <div class="project-card">
+        <img src="image/colorgrading.jpg" alt="Color Grading" onclick="openPreview(this)">
+        <h3>Color Grading</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!  <!-- Popup Preview -->
+  <div id="previewModal" class="preview-modal" onclick="closePreview()">
+    <span class="close">&times;</span>
+    <div class="preview-content">
+      <img id="previewImage" src="" alt="">
+      <video id="previewVideo" controls autoplay loop muted playsinline></video>
+    </div>
+  </div>
+
+  <!-- SCRIPT DI BAWAH SINI -->
+  <script>
+  function openPreview(element) {
+    const modal = document.getElementById("previewModal");
+    const img = document.getElementById("previewImage");
+    const video = document.getElementById("previewVideo");
+
+    modal.classList.add("active");
+
+    // jika gambar diklik
+    if (element.tagName === "IMG") {
+      img.src = element.src;
+      img.style.display = "block";
+      video.style.display = "none";
+    } 
+    // jika video diklik
+    else if (element.tagName === "VIDEO") {
+      video.src = element.querySelector("source").src;
+      video.style.display = "block";
+      img.style.display = "none";
+    }
+  }
+
+  function closePreview() {
+    const modal = document.getElementById("previewModal");
+    const video = document.getElementById("previewVideo");
+
+    modal.classList.remove("active");
+    video.pause(); // stop video ketika modal ditutup
+  }
+  </script>
+</body>
+</html>
+
+
+
+  <!-- SLIDE 4 -->
+  <section id="slide4" class="slide services">
+    <div class="content">
+      <h2>Layanan</h2>
+      <ul class="services-list">
+        <li>🎨 Desain Grafis</li>
+        <li>💻 Color Grading Foto</li>
+        <li>🖋️ Editing Video</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SLIDE 5 -->
+ <section id="slide5" class="slide contact">
+  <div class="content">
+    <h2>Kontak</h2>
+    <p>Klik tautan di bawah untuk menghubungi kami:</p>
+
+    <div class="contact-buttons">
+      <a href="mailto:daltacreative.id@gmail.com" class="btn email" target="_blank"> Kirim Email</a>
+      <a href="https://www.instagram.com/daltacreative.id/" class="btn instagram" target="_blank"> Lihat Instagram  kami</a>
+      <a href="https://wa.me/6287738871867?text=Halo%20saya%20tertarik%20dengan%20jasa%20Anda!" class="btn whatsapp" target="_blank"> Hubungi Kami di WhatsApp</a>
+    </div>
+  </div>
+</section>
+  <footer>
+    <p>© 2025 Dalta Creative.ID. Semua hak cipta dilindungi.</p>
+  </footer>
+
+  <script>
+    // Smooth scroll antar slide
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+  <script>
+  // Cek apakah elemen terlihat di layar
+  function revealSlides() {
+    const slides = document.querySelectorAll('.slide');
+    const triggerBottom = window.innerHeight * 0.8;
+
+    slides.forEach(slide => {
+      const slideTop = slide.getBoundingClientRect().top;
+
+      if (slideTop < triggerBottom) {
+        slide.classList.add('visible');
+      } else {
+        slide.classList.remove('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealSlides);
+  window.addEventListener('load', revealSlides);
+</script>
+
+</body>
+</html>
